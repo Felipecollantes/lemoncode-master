@@ -1,0 +1,71 @@
+// Variables
+$base-color-red: #ff4d4d;
+$base-color-blue: #3a37b6;
+$base-color-green: #4CAF50;
+$font-color-light: #ffffff;
+$font-color-dark: #000000;
+$max-lighten: 30%;
+$box-width: 100px;
+$box-height: 100px;
+$box-margin: 2px;
+
+// Mixin to generate background gradients based on a base color
+@mixin box-styles($bg-color, $width: $box-width, $height: $box-height) {
+  background-color: $bg-color;
+  border-radius: 5px;
+  width: $width;
+  height: $height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  margin: $box-margin;
+}
+
+// Mixin to generate text color gradients
+@mixin font-color($bg-color, $factor) {
+  $text-color: mix($font-color-dark, $font-color-light, $factor);
+  color: $text-color;
+}
+
+// Mixin to generate a container with a base color
+@mixin generate-container($container-name, $base-color) {
+  .#{$container-name} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    .box {
+      @include box-styles($base-color);
+      @include font-color($base-color, 50%);
+    }
+    .base-color {
+      @include box-styles($base-color, $box-width * 1.5);
+      color: $font-color-dark;
+    }
+
+    // Darken colors
+    $darken-levels: 4;
+    @for $i from 1 through $darken-levels {
+      $darkness-factor: $i * 10%;
+      .darken-#{$i} {
+        $darker-color: darken($base-color, $darkness-factor);
+        @include box-styles($darker-color);
+        @include font-color($darker-color, $darkness-factor);
+      }
+    }
+
+    // Lighten colors
+    $lighten-levels: 4;
+    @for $i from 1 through $lighten-levels {
+      $lighten-amount: min($i * 10%, $max-lighten);
+      $lightness-factor: 100% - ($i * 10%);
+      .lighten-#{$i} {
+        $lighter-color: lighten($base-color, $lighten-amount);
+        @include box-styles($lighter-color);
+        @include font-color($lighter-color, $lightness-factor);
+      }
+    }
+  }
+}
