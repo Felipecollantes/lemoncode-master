@@ -1,0 +1,44 @@
+@use 'base-one' as *;
+//@use 'base-two' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  .principal-font {
+    font-family: $principal-font;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .secondary-font {
+    font-family: $secondary-font;
+    font-size: 1.125rem;
+    font-weight: 400;
+  }
+  .box {
+    width: 6.25rem;
+    height: 6.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.base {
+      background-color: $base-color;
+    }
+    &.important {
+      background-color: $important-color;
+    }
+    &.warning {
+      background-color: $warning-color;
+    }
+  }
+  .box-with-shadow {
+    width: 9.375rem;
+    height: 9.375rem;
+    background-color: lightgray;
+    box-shadow: $box-with-shadow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

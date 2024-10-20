@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx parcel src/index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf .parcel-cache",
+    "start-one": "npm run clean && npx parcel exercise-one/src/index.html --port 1234",
+    "start-two": "npm run clean && npx parcel exercise-two/src/index.html --port 5678"
   },
   "author": "",
   "license": "ISC",

@@ -1,4 +1,4 @@
-@import 'base';
+@use 'base' as *;
 
 @include generate-container('container-1', $base-color-red);
 @include generate-container('container-2', $base-color-blue);
