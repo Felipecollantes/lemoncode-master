@@ -7,7 +7,8 @@
     "clean": "rm -rf .parcel-cache",
     "start-one": "npm run clean && npx parcel exercise-one/src/index.html",
     "start-two": "npm run clean && npx parcel exercise-two/src/index.html",
-    "start-three": "npm run clean && npx parcel exercise-three/src/index.html"
+    "start-three": "npm run clean && npx parcel exercise-three/src/index.html",
+    "start-four": "npm run clean && npx parcel exercise-four/src/index.html"
   },
   "author": "",
   "license": "ISC",

@@ -1,0 +1,72 @@
+body {
+  background-color: #dedddd;
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 20px;
+    grid-auto-flow: row;
+    justify-content: space-around;
+    .card {
+      display: grid;
+      grid-template-rows: repeat(2, auto);
+      width: 100%;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        margin: 0;
+      }
+      .info-container {
+        display: grid;
+        grid-template-rows: repeat(2, auto);
+        gap: 10px;
+        padding: 20px;
+      }
+      .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        button {
+          width: 100%;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          background-color: #4f8081;
+          color: white;
+          cursor: pointer;
+          font-size: 1rem;
+          &:hover {
+            background-color: #436667;
+          }
+        }
+      }
+      .title {
+        font-size: 1.5rem;
+        margin: 0;
+        color: #333;
+      }
+      .text {
+        font-size: 1rem;
+        color: #666;
+      }
+      .date-container {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        font-size: 0.9rem;
+        :nth-child(1) {
+          color: #000000;
+        }
+        :nth-child(2) {
+          color: #63dc43;
+        }
+      }
+    }
+  }
+}
