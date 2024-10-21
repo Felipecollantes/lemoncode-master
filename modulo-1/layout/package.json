@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf .parcel-cache",
-    "start-one": "npm run clean && npx parcel exercise-one/src/index.html --port 1234",
-    "start-two": "npm run clean && npx parcel exercise-two/src/index.html --port 5678"
+    "start-one": "npm run clean && npx parcel exercise-one/src/index.html",
+    "start-two": "npm run clean && npx parcel exercise-two/src/index.html",
+    "start-three": "npm run clean && npx parcel exercise-three/src/index.html"
   },
   "author": "",
   "license": "ISC",
