@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Variables
 $base-color-red: #ff4d4d;
 $base-color-blue: #3a37b6;
@@ -24,7 +26,7 @@ $box-margin: 2px;
 
 // Mixin to generate text color gradients
 @mixin font-color($bg-color, $factor) {
-  $text-color: mix($font-color-dark, $font-color-light, $factor);
+  $text-color: color.mix($font-color-light, $font-color-dark, $factor);
   color: $text-color;
 }
 
@@ -50,7 +52,7 @@ $box-margin: 2px;
     @for $i from 1 through $darken-levels {
       $darkness-factor: $i * 10%;
       .darken-#{$i} {
-        $darker-color: darken($base-color, $darkness-factor);
+        $darker-color: color.adjust($base-color, $lightness: -$darkness-factor);
         @include box-styles($darker-color);
         @include font-color($darker-color, $darkness-factor);
       }
@@ -62,7 +64,7 @@ $box-margin: 2px;
       $lighten-amount: min($i * 10%, $max-lighten);
       $lightness-factor: 100% - ($i * 10%);
       .lighten-#{$i} {
-        $lighter-color: lighten($base-color, $lighten-amount);
+        $lighter-color: color.adjust($base-color, $lightness: $lighten-amount);
         @include box-styles($lighter-color);
         @include font-color($lighter-color, $lightness-factor);
       }
