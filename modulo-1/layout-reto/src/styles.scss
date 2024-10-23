@@ -1,0 +1,115 @@
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #141414;
+  color: white;
+  margin: 0;
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #141414;
+    padding: 1.5rem;
+    position: sticky;
+    top: 0;
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 1.5rem;
+    #top-text::before {
+      content: '5';
+    }
+    .main-title {
+      display: flex;
+    }
+    .top {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .top-item {
+        flex: 1 1 200px;
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+      }
+    }
+    .first, .second {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 4px;
+      flex-wrap: wrap;
+      .item {
+        flex: 1 1 200px;
+        transition: flex-grow 0.3s ease;
+        img {
+          width: 100%;
+          object-fit: cover;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+        }
+        &:hover {
+          img {
+            transform: scale(1.1);
+          }
+        }
+        .first:hover .item:not(:hover) {
+          flex-grow: 0.8;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1279px) {
+    header {
+      .platform-title {
+        display: none;
+      }
+      .header-buttons {
+        font-size: 24px;
+      }
+    }
+    main {
+      #top-text::before {
+        content: '3';
+      }
+      .top {
+        .top-item:nth-child(1),
+        .top-item:nth-child(2) {
+          display: none;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 680px) {
+    main {
+      .top {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+      .first, .second {
+        .item {
+          &:hover {
+            img {
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+    }
+  }
+}
