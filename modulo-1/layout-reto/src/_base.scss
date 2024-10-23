@@ -1,0 +1,40 @@
+$background-color: #141414;
+$white-color: white;
+$hover-bg-color: white;
+$hover-text-color: black;
+
+$font-family-main: 'Jost-VariableFont_wght.ttf', sans-serif;
+
+$medium-screen: 1279px;
+$small-screen: 740px;
+
+$header-height: 82px;
+$font-size-large: 24px;
+$font-size-medium: 18px;
+$font-size-small: 14px;
+
+@mixin hover-effect($bg-color, $text-color) {
+  &:hover {
+    background-color: $bg-color;
+    color: $text-color;
+  }
+}
+
+@mixin flexbox($justify: center, $align: center, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == small {
+    @media screen and (max-width: $small-screen) {
+      @content;
+    }
+  } @else if $breakpoint == medium {
+    @media screen and (max-width: $medium-screen) {
+      @content;
+    }
+  }
+}
