@@ -1,7 +1,8 @@
-# Proyecto Frontend con Parcel
+## Descripción del Proyecto
 
-Este proyecto es un layout básico con contenedores y cajas de colores que varían en tonalidad. Utilizamos [Parcel](https://parceljs.org/) como bundler para manejar los archivos HTML, Sass y otros recursos.
+Una conocida casa cinematográfica quiere crear su propia plataforma online para distribuir sus producciones, a la que van a llamar **WARNER LIVE**.
 
+Nos han solicitado una prueba de maquetación para un primer diseño. El éxito de esta prueba determinará si pasamos a la siguiente fase del proceso de selección.
 
 ## Instalación
 
