@@ -30,7 +30,8 @@ Para ejecutar este proyecto en tu entorno local, sigue los siguientes pasos:
    npm run start-one
    ```
   
-- Ejecutar npm run start-two para ejecutar el segundo ejercicio
+- Ejecutar npm run start-two para ejecutar el segundo ejercicio.
+- En este ejercicio en el archivo styles.scss cambiar el @use por el comentado para cambiar el diseño.
 
    ```bash
    npm run start-two
