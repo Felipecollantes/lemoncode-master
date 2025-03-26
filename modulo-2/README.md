@@ -23,7 +23,7 @@ Para ejecutar cada ejercicio, utiliza los siguientes comandos:
 
 ```bash
 # Instalar dependencias
-cd modulo-2/lenguajes
+cd modulo-2
 npm install
 
 # Ejecutar ejercicio 1 - Array Operations
