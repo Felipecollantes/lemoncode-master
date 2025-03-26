@@ -1,0 +1,19 @@
+{
+  "name": "lenguajes",
+  "version": "1.0.0",
+  "description": "Módulo 2 - Ejercicios de Lenguajes",
+  "main": "index.js",
+  "scripts": {
+    "exercise-one": "node exercise-one/index.js",
+    "exercise-two": "node exercise-two/index.js",
+    "exercise-three": "node exercise-three/index.js",
+    "exercise-four": "ts-node exercise-four/index.ts",
+    "exercise-five": "node exercise-five/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+} 
