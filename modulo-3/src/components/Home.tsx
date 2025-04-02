@@ -1,7 +1,7 @@
 import React from "react";
 import * as styles from "./Home.module.scss";
-import logo1 from "../content/logo_1.png";
-import logo2 from "../content/logo_2.png";
+import logo1 from "@content/logo_1.png";
+import logo2 from "@content/logo_2.png";
 
 export const Home: React.FC = () => {
   return (

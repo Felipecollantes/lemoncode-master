@@ -8,6 +8,12 @@ export default {
   context: path.resolve(__dirname, "src"),
   resolve: {
     extensions: [".js", ".ts", ".tsx"],
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+      "@components": path.resolve(__dirname, "src/components"),
+      "@content": path.resolve(__dirname, "src/content"),
+      "@styles": path.resolve(__dirname, "src/styles"),
+    },
   },
   entry: {
     app: "./main.tsx",
@@ -24,8 +30,24 @@ export default {
         loader: "babel-loader",
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            // Archivos menores a 8kb serán inline (base64)
+            maxSize: 8 * 1024, 
+          },
+        },
+        generator: {
+          filename: "images/[name].[hash:8][ext][query]",
+        },
+      },
+      {
+        test: /\.svg$/,
         type: "asset/resource",
+        generator: {
+          filename: "images/[name].[hash:8][ext][query]",
+        },
       },
       {
         test: /\.html$/,
