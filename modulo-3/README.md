@@ -161,6 +161,116 @@ Ventajas:
 - Carga más rápida cuando solo cambia el código de la aplicación
 - Optimización de la descarga inicial
 
+### 7. Variables de entorno para desarrollo y producción
+
+Se utilizan variables de entorno específicas para cada entorno mediante el plugin DefinePlugin:
+
+```javascript
+// En webpack.dev.js y webpack.prod.js
+new webpack.DefinePlugin({
+  'process.env.NODE_ENV': JSON.stringify('development'),
+  'process.env.API_URL': JSON.stringify('http://localhost:8080/api'),
+  'process.env.IS_DEVELOPMENT': JSON.stringify('true'),
+  'process.env.IS_PRODUCTION': JSON.stringify('false'),
+  'process.env.APP_VERSION': JSON.stringify('dev-version'),
+})
+```
+
+> ⚠️ **Importante**: Todas las variables deben estar envueltas en `JSON.stringify()`, incluso los valores booleanos como 'true' y 'false'. Si no se hace así, las variables pueden aparecer vacías en la aplicación.
+
+Ventajas:
+- Configuración específica según el entorno
+- Valores incrustados en tiempo de compilación (no se envían al cliente)
+- Optimización de código basada en condiciones de entorno
+- Control centralizado de endpoints y configuraciones
+
+Para utilizar estas variables en el código:
+
+```javascript
+// En cualquier componente React
+if (process.env.IS_DEVELOPMENT === 'true') {
+  console.log('Estamos en desarrollo');
+}
+
+// URLs de API
+fetch(process.env.API_URL + '/users')
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+### 8. Carga diferida (Lazy Loading) y Skeleton UI
+
+Para mejorar el rendimiento y la experiencia de usuario, se implementa una estrategia de carga diferida con esqueletos visuales:
+
+```javascript
+// Componente que carga Home de forma diferida
+const HomeLazy = lazy(() => import('./Home').then(module => ({ default: module.Home })));
+
+export const App: React.FC = () => {
+  return (
+    <Suspense fallback={<AppSkeleton />}>
+      <HomeLazy />
+    </Suspense>
+  );
+};
+```
+
+Beneficios:
+- **Carga inmediata y optimizada**: Los componentes se cargan solo cuando son necesarios, sin retrasos artificiales
+- **Feedback visual durante la carga real**: Los skeletons se muestran solo durante el tiempo que toma cargar los componentes realmente
+- **Experiencia fluida**: Transiciones suaves entre estados de carga y contenido final
+- **División de código eficiente**: El código se divide en chunks más pequeños que se cargan bajo demanda
+- **Sin saltos de layout**: Los skeletons tienen las mismas dimensiones que los componentes finales
+
+> **Nota**: El esqueleto (skeleton) solo se mostrará durante el tiempo real que tarda en cargar el componente, lo que generalmente es muy rápido en desarrollo local. En redes más lentas o en producción con caché fría, los skeletons proporcionan una mejor experiencia de usuario que una pantalla en blanco.
+
+React en modo desarrollo es significativamente más grande debido a las herramientas de desarrollo incluidas. Por eso, la configuración del entorno de desarrollo tiene límites de tamaño más permisivos:
+
+```javascript
+// En webpack.dev.js
+performance: {
+  maxEntrypointSize: 3 * 1024 * 1024, // 3MB para entorno de desarrollo
+  maxAssetSize: 3 * 1024 * 1024,
+  hints: "warning",
+},
+```
+
+### 9. División del bundle para optimización
+
+Para mejorar aún más el rendimiento, el código se divide en múltiples chunks:
+
+```javascript
+// En webpack.dev.js y webpack.prod.js
+optimization: {
+  runtimeChunk: "single",
+  splitChunks: {
+    chunks: 'all',
+    cacheGroups: {
+      vendor: {
+        test: /[\\/]node_modules[\\/]/,
+        name: 'vendors',
+        chunks: 'all',
+        enforce: true,
+      },
+      react: {
+        test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+        name: 'react',
+        chunks: 'all',
+        priority: 10,
+      },
+    },
+  },
+},
+```
+
+Esto divide la aplicación en:
+- **runtime**: El código de tiempo de ejecución de webpack
+- **react**: Las bibliotecas de React y React DOM
+- **vendors**: Otras bibliotecas externas
+- **app**: El código específico de la aplicación
+
+Cada chunk puede cargarse en paralelo y aprovechar la caché del navegador de manera independiente.
+
 ## Configuración de entornos
 
 El proyecto utiliza distintas configuraciones según el entorno:
@@ -175,6 +285,12 @@ El proyecto utiliza distintas configuraciones según el entorno:
 ```bash
 # Desarrollo con hot reload
 npm start
+
+# Iniciar servidor de desarrollo con configuración de desarrollo
+npm run start:dev
+
+# Iniciar servidor de desarrollo con configuración de producción
+npm run start:prod   # Ejecuta en puerto 8081 con variables de entorno de producción
 
 # Compilación para desarrollo
 npm run build:dev
