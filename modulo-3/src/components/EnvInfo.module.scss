@@ -1,0 +1,28 @@
+.envContainer {
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.production {
+  background-color: #ffeded;
+}
+
+.development {
+  background-color: #e6f7ff;
+}
+
+.infoList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.infoItem {
+  margin-bottom: 8px;
+}
+
+.label {
+  font-weight: bold;
+  margin-right: 6px;
+} 
