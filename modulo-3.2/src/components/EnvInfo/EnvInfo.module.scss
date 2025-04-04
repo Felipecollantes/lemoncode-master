@@ -1,0 +1,170 @@
+// Importación explícita de variables
+@use '@styles/variables.scss' as *;
+
+.envContainer {
+  background-color: $color-background-light;
+  border-radius: $border-radius-md;
+  padding: $spacing-lg;
+  margin-top: $spacing-lg;
+  box-shadow: $box-shadow-sm;
+  
+  // Aplicamos diferentes estilos según el breakpoint
+  @include screen-sm {
+    padding: $spacing-xl;
+    max-width: 540px;
+    margin: $spacing-lg auto;
+  }
+  
+  @include screen-md {
+    max-width: 720px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+  
+  @include screen-lg {
+    max-width: 960px;
+    box-shadow: $box-shadow-md;
+  }
+}
+
+.envTitle {
+  color: $color-primary;
+  margin-bottom: $spacing-md;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  text-align: center;
+  
+  @include screen-sm {
+    font-size: calc($font-size-xl * 1.2);
+  }
+  
+  @include screen-md {
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.envList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+}
+
+.envItem {
+  display: flex;
+  padding: $spacing-sm;
+  border-bottom: 1px solid $color-border;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.envLabel {
+  font-weight: $font-weight-bold;
+  min-width: 150px;
+  color: $color-text;
+}
+
+.envValue {
+  color: $color-text-light;
+}
+
+.envInfo {
+  margin-top: $spacing-lg;
+  padding: $spacing-md;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: $border-radius-sm;
+  
+  @include screen-md {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+  
+  @include screen-lg {
+    padding: $spacing-lg;
+  }
+  
+  p {
+    margin-bottom: $spacing-xs;
+    font-weight: $font-weight-medium;
+    
+    @include screen-md {
+      font-size: $font-size-lg;
+    }
+  }
+  
+  pre {
+    background-color: $color-text;
+    color: white;
+    padding: $spacing-sm;
+    border-radius: $border-radius-sm;
+    margin-bottom: $spacing-md;
+    font-family: monospace;
+    overflow-x: auto;
+    
+    @include screen-lg {
+      padding: $spacing-md;
+      font-size: $font-size-md;
+    }
+  }
+}
+
+.envOptimized {
+  background-color: rgba($color-secondary, 0.1);
+  border-left: 4px solid $color-secondary;
+  padding: $spacing-md;
+  border-radius: $border-radius-sm;
+  
+  p {
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sm;
+  }
+  
+  ul {
+    margin-left: $spacing-lg;
+  }
+}
+
+.envDevelopment {
+  background-color: rgba($color-primary, 0.1);
+  border-left: 4px solid $color-primary;
+  padding: $spacing-md;
+  border-radius: $border-radius-sm;
+  
+  p {
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-sm;
+  }
+  
+  ul {
+    margin-left: $spacing-lg;
+  }
+}
+
+.infoList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.infoItem {
+  margin-bottom: $spacing-sm;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+  
+  @include responsive(xs) {
+    flex-direction: column;
+  }
+}
+
+.label {
+  font-weight: $font-weight-bold;
+  color: $color-dark;
+  
+  &::after {
+    content: ":";
+  }
+}

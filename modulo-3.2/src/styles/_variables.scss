@@ -1,0 +1,112 @@
+// COLORES
+$color-primary: #0088cc;
+$color-secondary: #5cb85c;
+$color-accent: #f0ad4e;
+$color-success: #2ecc71;
+$color-warning: #f39c12;
+$color-danger: #d9534f;
+$color-info: #3498db;
+$color-light: #ecf0f1;
+$color-dark: #2c3e50;
+$color-white: #ffffff;
+$color-black: #000000;
+$color-text: #333;
+$color-text-light: #767676;
+$color-background: #fff;
+$color-background-light: #f9f9f9;
+$color-border: #ddd;
+
+// COLORES DE ENTORNO
+$color-production-bg: #ffeded;
+$color-development-bg: #e6f7ff;
+
+// TIPOGRAFÍA
+$font-family-base: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-xxl: 2rem;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$line-height-base: 1.5;
+
+// ESPACIADO
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// BORDES Y SOMBRAS
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-circle: 50%;
+
+$box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+$box-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$box-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+// BREAKPOINTS
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// MIXINS
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: $breakpoint-xs) { @content; }
+  } @else if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  } @else if $breakpoint == xxl {
+    @media (min-width: $breakpoint-xxl) { @content; }
+  }
+}
+
+@mixin screen-sm {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin screen-md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin screen-lg {
+  @media (min-width: 992px) {
+    @content;
+  }
+} 
