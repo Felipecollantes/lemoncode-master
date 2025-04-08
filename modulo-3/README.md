@@ -2,6 +2,8 @@
 
 Este proyecto implementa diversas optimizaciones en la configuración de Webpack para mejorar el rendimiento, la organización y el mantenimiento del código.
 
+OPCIONAL: Se ha creado en VITE el mismo proyecto en vez de Parcel.
+
 ## Optimizaciones implementadas
 
 ### 1. Alias de importaciones
