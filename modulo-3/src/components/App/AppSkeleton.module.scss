@@ -1,0 +1,100 @@
+// Variables
+$skeleton-color: #e0e0e0;
+$background-color: #f6f7f8;
+$border-radius-main: 8px;
+$border-radius-item: 4px;
+$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+// Mixins
+@mixin pulse-animation {
+  animation: pulse 1.5s ease-in-out infinite alternate;
+  @keyframes pulse {
+    0% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin skeleton-base {
+  background-color: $skeleton-color;
+  border-radius: $border-radius-item;
+}
+
+// Styles
+.container {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  @include pulse-animation;
+
+  .title {
+    height: 38px;
+    width: 70%;
+    @include skeleton-base;
+    margin-bottom: 40px;
+  }
+
+  .logoContainer {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      @include skeleton-base;
+      border-radius: $border-radius-main;
+    }
+  }
+
+  .infoContainer {
+    background-color: $background-color;
+    border-radius: $border-radius-main;
+    padding: 20px;
+    box-shadow: $box-shadow;
+
+    .infoHeader {
+      height: 28px;
+      width: 60%;
+      @include skeleton-base;
+      margin-bottom: 15px;
+    }
+
+    .infoItemsContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+
+      .infoItem {
+        display: flex;
+        align-items: center;
+      }
+
+      .infoItemLabel {
+        height: 16px;
+        width: 120px;
+        @include skeleton-base;
+        margin-right: 10px;
+      }
+
+      .infoItemValue {
+        height: 16px;
+        @include skeleton-base;
+
+        &.even {
+          width: 200px;
+        }
+
+        &.odd {
+          width: 150px;
+        }
+      }
+    }
+  }
+}

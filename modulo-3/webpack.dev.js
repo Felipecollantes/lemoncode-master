@@ -62,9 +62,9 @@ export default merge(common, {
     },
   },
   performance: {
-    maxEntrypointSize: 3 * 1024 * 1024, // 3MB
-    maxAssetSize: 3 * 1024 * 1024,      // 3MB
-    hints: "warning",                    // Mantener advertencias pero con límites mucho más altos
+    maxEntrypointSize: 5 * 1024 * 1024, // 5MB
+    maxAssetSize: 5 * 1024 * 1024,      // 5MB
+    hints: "warning",                    // Mantener advertencias pero con límites más altos
   },
   plugins: [
     new webpack.DefinePlugin({

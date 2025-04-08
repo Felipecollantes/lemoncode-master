@@ -1,0 +1,71 @@
+// Variables
+$background-color: #f6f7f8;
+$skeleton-color: #e0e0e0;
+$border-radius-main: 8px;
+$border-radius-item: 4px;
+$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+// Mixins
+@mixin pulse-animation {
+  animation: pulse 1.5s ease-in-out infinite alternate;
+  @keyframes pulse {
+    0% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin skeleton-base {
+  background-color: $skeleton-color;
+  border-radius: $border-radius-item;
+}
+
+.container {
+  background-color: $background-color;
+  border-radius: $border-radius-main;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: $box-shadow;
+  @include pulse-animation;
+
+  .header {
+    height: 28px;
+    width: 60%;
+    @include skeleton-base;
+    margin-bottom: 15px;
+  }
+
+  .itemsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .item {
+      display: flex;
+      align-items: center;
+    }
+
+    .itemLabel {
+      height: 16px;
+      width: 120px;
+      @include skeleton-base;
+      margin-right: 10px;
+    }
+
+    .itemValue {
+      height: 16px;
+      @include skeleton-base;
+
+      &.even {
+        width: 200px;
+      }
+
+      &.odd {
+        width: 150px;
+      }
+    }
+  }
+}

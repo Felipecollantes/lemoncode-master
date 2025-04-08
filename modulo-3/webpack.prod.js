@@ -54,6 +54,11 @@ export default (env = {}) => {
         stats: "errors-only",
       },
     } : undefined,
+    performance: {
+      maxEntrypointSize: 500 * 1024, // 500KB
+      maxAssetSize: 500 * 1024,      // 500KB
+      hints: "warning",
+    },
     optimization: {
       minimize: true,
       minimizer: [
