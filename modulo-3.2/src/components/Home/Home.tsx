@@ -1,5 +1,5 @@
 import React from 'react';
-import { EnvInfo } from '../EnvInfo';
+import { LazyEnvInfo } from '../EnvInfo';
 import styles from './Home.module.scss';
 
 export const Home: React.FC = () => {
@@ -19,8 +19,7 @@ export const Home: React.FC = () => {
           className={styles.logo}
         />
       </div>
-      
-      <EnvInfo />
+      <LazyEnvInfo/>
     </div>
   );
 };
